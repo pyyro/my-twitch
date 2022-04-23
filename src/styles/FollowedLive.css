@@ -1,0 +1,10 @@
+.livestreams-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.livestreamcard{
+    margin: 10px;
+}
