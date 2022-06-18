@@ -1,7 +1,6 @@
 import api from "../api";
 import GameCard from "../components/GameCard";
 import { useState, useEffect } from "react";
-import '../styles/TopGames.css'
 
 const TopGames = () => {
   const [topGames, setTopGames] = useState([]);
@@ -13,7 +12,7 @@ const TopGames = () => {
     };
 
     getTopGames();
-    document.title = "Top Games"
+    document.title = "Top Games";
   }, []);
 
   var thumbnailUrlPre = "https://static-cdn.jtvnw.net/ttv-boxart/";
@@ -21,18 +20,16 @@ const TopGames = () => {
 
   return (
     <div className="topgames-container">
-    {topGames.map((topGame) => (
-      <GameCard
-        game_thumbnail={
-          thumbnailUrlPre +  topGame.name + thumbnailUrlPost
-        }
-        game_name = {topGame.name}
-        game_id = {topGame.id}
-        key = {Math.random()*1000}
-      />
-    ))}
-  </div>
-  )
+      {topGames.map((topGame) => (
+        <GameCard
+          game_thumbnail={thumbnailUrlPre + topGame.name + thumbnailUrlPost}
+          game_name={topGame.name}
+          game_id={topGame.id}
+          key={Math.random() * 1000}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default TopGames;

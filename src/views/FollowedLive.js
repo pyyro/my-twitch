@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import moment from "moment";
 import api from "../api";
-import "../styles/FollowedLive.css";
 import LiveStreamCard from "../components/LiveStreamCard";
+import { Flex } from "@chakra-ui/react";
 
 const FollowedLive = () => {
   const [followedLiveStreams, setFollowedLiveStreams] = useState([]);
   useEffect(() => {
     var userId;
-    const getUserId = async() => {
+    const getUserId = async () => {
       const result = await api.get("https://api.twitch.tv/helix/users");
-       userId = result.data.data[0].id;
-       console.log("id fun  ran")
-    }
+      userId = result.data.data[0].id;
+    };
 
     const getFollowedLiveStreams = async () => {
       await getUserId();
@@ -20,9 +19,8 @@ const FollowedLive = () => {
         `https://api.twitch.tv/helix/streams/followed?user_id=${userId}`
       );
       setFollowedLiveStreams(result.data.data);
-      
     };
-    
+
     getFollowedLiveStreams();
 
     document.title = "Followed Live Streams";
@@ -32,7 +30,7 @@ const FollowedLive = () => {
   var thumbnailUrlPost = "-286x206.jpg";
 
   return (
-    <div className="livestreams-container">
+    <Flex flexWrap="wrap" gap={10} mt={4} justify="center">
       {followedLiveStreams.map((followedLiveStream) => (
         <LiveStreamCard
           thumbnail={
@@ -47,7 +45,7 @@ const FollowedLive = () => {
           key={Math.random() * 1000}
         />
       ))}
-    </div>
+    </Flex>
   );
 };
 

@@ -27,8 +27,8 @@ const TopStreamsForGame = () => {
 
   return (
     <>
-     <div style={{textAlign: "center"}}>
-      <span>Top 20 live streams for {params.gamename}</span>
+      <div style={{ textAlign: "center" }}>
+        <span>Top 20 live streams for {params.gamename}</span>
       </div>
       <div className="livestreams-container">
         {topLiveStreamsForGame.map((topLiveStreamForGame) => (

@@ -1,3 +1,6 @@
+import { Box, Image, Text } from "@chakra-ui/react";
+import DarkModeContext from "../contexts/DarkModeContext";
+import { useContext } from "react";
 const LiveStreamCard = ({
   thumbnail,
   streamer,
@@ -7,21 +10,31 @@ const LiveStreamCard = ({
   viewer_count,
   streamer_username,
 }) => {
+  const { darkMode } = useContext(DarkModeContext);
+
+  const handleCardClick = () => {
+    window.open(`https://twitch.tv/${streamer_username}`, "_blank");
+  };
   return (
-    <div className="livestreamcard">
-      <div className="card" style={{ width: "18rem" }}>
-        <a href={"https://twitch.tv/" + streamer_username} target="_blank">
-        <img src={thumbnail} className="card-img-top"></img>
-        </a>
-        <div className="card-body">
-          <h3>{streamer}</h3>
-          <h4>{game}</h4> <br></br>
-          <span>{title}</span> <br></br>
-          <span>{viewer_count}</span> <br></br>
-          <span>{uptime}</span>
-        </div>
-      </div>
-    </div>
+    <Box
+      bg={darkMode ? "#252831" : "#FFFFFE"}
+      boxShadow="md"
+      _hover={{ boxShadow: "2xl" }}
+      transition="ease"
+      transitionDuration="0.15s"
+      onClick={handleCardClick}
+      boxSize="sm"
+      borderRadius="5px"
+      cursor="pointer"
+      color={darkMode ? "white" : ""}
+    >
+      <Image src={thumbnail} />
+      <Text fontSize="xl">{streamer}</Text>
+      <Text fontSize="xl">{game}</Text>
+      <Text fontSize="xl">{title}</Text>
+      <Text fontSize="xl">{viewer_count}</Text>
+      <Text fontSize="xl">{uptime}</Text>
+    </Box>
   );
 };
 
