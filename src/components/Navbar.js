@@ -9,7 +9,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import "@fontsource/cabin";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import DarkModeContext from "../contexts/DarkModeContext";
@@ -27,7 +26,6 @@ const Navbar = ({ user, setUser }) => {
       justify="space-between"
       p={2}
       color={darkMode ? "white" : "black"}
-      fontFamily="Cabin, sans-serif"
       boxShadow="md"
     >
       <Link to="/">

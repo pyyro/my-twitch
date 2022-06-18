@@ -1,6 +1,7 @@
 import api from "../api";
 import GameCard from "../components/GameCard";
 import { useState, useEffect } from "react";
+import { Flex } from "@chakra-ui/react";
 
 const TopGames = () => {
   const [topGames, setTopGames] = useState([]);
@@ -19,7 +20,7 @@ const TopGames = () => {
   var thumbnailUrlPost = "-286x206.jpg";
 
   return (
-    <div className="topgames-container">
+    <Flex flexWrap="wrap" gap={10} mt={4} justify="center">
       {topGames.map((topGame) => (
         <GameCard
           game_thumbnail={thumbnailUrlPre + topGame.name + thumbnailUrlPost}
@@ -28,7 +29,7 @@ const TopGames = () => {
           key={Math.random() * 1000}
         />
       ))}
-    </div>
+    </Flex>
   );
 };
 

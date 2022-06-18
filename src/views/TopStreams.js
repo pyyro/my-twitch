@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 import api from "../api";
 import LiveStreamCard from "../components/LiveStreamCard";
+import { Flex } from "@chakra-ui/react";
 
 const TopStreams = () => {
   const [topLiveStreams, setTopLiveStreams] = useState([]);
@@ -19,7 +20,7 @@ const TopStreams = () => {
   var thumbnailUrlPre = "https://static-cdn.jtvnw.net/previews-ttv/live_user_";
   var thumbnailUrlPost = "-286x206.jpg";
   return (
-    <div className="livestreams-container">
+    <Flex flexWrap="wrap" gap={10} mt={4} justify="center">
       {topLiveStreams.map((topLiveStream) => (
         <LiveStreamCard
           thumbnail={
@@ -34,7 +35,7 @@ const TopStreams = () => {
           key={Math.random() * 1000}
         />
       ))}
-    </div>
+    </Flex>
   );
 };
 

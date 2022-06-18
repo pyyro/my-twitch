@@ -1,18 +1,31 @@
-import { Link } from "react-router-dom";
+import { Box, Image, Text } from "@chakra-ui/react";
+import DarkModeContext from "../contexts/DarkModeContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const GameCard = ({game_thumbnail, game_id, game_name, }) => {
-    return ( 
-        <div className="gamecard">
-        <div className="card" style={{ width: "18rem", }}>
-          <Link to={`/allgames/${game_name}?id=${game_id}`}>
-          <img src={game_thumbnail} className="card-img-top"></img>
-          </Link>
-          <div className="card-body">
-            <h3>{game_name}</h3>
-          </div>
-        </div>
-      </div>
-     );
-}
- 
+const GameCard = ({ game_thumbnail, game_id, game_name }) => {
+  const { darkMode } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+  const handleCardClick = () => {
+    navigate(`/allgames/${game_name}?id=${game_id}`);
+  };
+  return (
+    <Box
+      bg={darkMode ? "#252831" : "#FFFFFE"}
+      boxShadow="md"
+      _hover={darkMode ? {} : { boxShadow: "2xl" }}
+      transition="ease"
+      transitionDuration="0.15s"
+      onClick={handleCardClick}
+      borderRadius="5px"
+      cursor="pointer"
+      color={darkMode ? "white" : ""}
+      p={2}
+    >
+      <Image src={game_thumbnail} />
+      <Text align="center">{game_name}</Text>
+    </Box>
+  );
+};
+
 export default GameCard;

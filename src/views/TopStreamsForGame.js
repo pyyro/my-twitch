@@ -3,8 +3,12 @@ import { useParams } from "react-router-dom";
 import LiveStreamCard from "../components/LiveStreamCard";
 import api from "../api";
 import moment from "moment";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import DarkModeContext from "../contexts/DarkModeContext";
+import { useContext } from "react";
 
 const TopStreamsForGame = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const query = new URLSearchParams(window.location.search);
   const id = query.get("id");
   const params = useParams();
@@ -26,11 +30,11 @@ const TopStreamsForGame = () => {
   var thumbnailUrlPost = "-286x206.jpg";
 
   return (
-    <>
-      <div style={{ textAlign: "center" }}>
-        <span>Top 20 live streams for {params.gamename}</span>
-      </div>
-      <div className="livestreams-container">
+    <Box>
+      <Text fontSize="2xl" align="center" color={darkMode ? "white" : "black"}>
+        Top 20 live streams for {params.gamename}
+      </Text>
+      <Flex flexWrap="wrap" gap={10} mt={4} justify="center">
         {topLiveStreamsForGame.map((topLiveStreamForGame) => (
           <LiveStreamCard
             thumbnail={
@@ -47,8 +51,8 @@ const TopStreamsForGame = () => {
             key={Math.random() * 1000}
           />
         ))}
-      </div>
-    </>
+      </Flex>
+    </Box>
   );
 };
 
