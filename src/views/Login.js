@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   return (
-    <Container maxW="3xl" h="94vh" p={20}>
+    <Container maxW="3xl" p={20}>
       <Text fontSize="2xl" color={darkMode ? "white" : "black"}>
         Twitch homepage is too bloated and laggy so I made my own.
       </Text>

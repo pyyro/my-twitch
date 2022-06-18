@@ -7,7 +7,11 @@ import "@fontsource/cabin";
 const Layout = ({ children, user, setUser }) => {
   const { darkMode } = useContext(DarkModeContext);
   return (
-    <Box bg={darkMode ? "#0B0C0E" : "#DEE0E3"} fontFamily="Cabin, sans-serif">
+    <Box
+      bg={darkMode ? "#0B0C0E" : "#DEE0E3"}
+      fontFamily="Cabin, sans-serif"
+      minHeight="100vh"
+    >
       <Navbar user={user} setUser={setUser} />
 
       {children}
